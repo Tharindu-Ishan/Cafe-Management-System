@@ -1,5 +1,8 @@
 package lk.ijse.dep11.serviceImpl;
 
+import lk.ijse.dep11.JWT.CustomerUsersDetailsService;
+import lk.ijse.dep11.JWT.JwtFilter;
+import lk.ijse.dep11.JWT.JwtUtil;
 import lk.ijse.dep11.POJO.User;
 import lk.ijse.dep11.constants.CafeConstants;
 import lk.ijse.dep11.dao.UserDao;
@@ -9,6 +12,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -19,6 +25,12 @@ import java.util.Objects;
 public class UserServiceImpl implements UserService {
     @Autowired
     UserDao userDao;
+    @Autowired
+    AuthenticationManager authenticationManager;
+    @Autowired
+    CustomerUsersDetailsService customerUsersDetailsService;
+    @Autowired
+    JwtUtil jwtUtil;
     @Override
     public ResponseEntity<String> signUp(Map<String, String> requestMap) {
         log.info("Inside signup {}",requestMap);
@@ -42,6 +54,30 @@ public class UserServiceImpl implements UserService {
         return CafeUtils.getResponseEntity(CafeConstants.SOMETHING_WENT_WRONG,HttpStatus.INTERNAL_SERVER_ERROR);
 
     }
+
+    @Override
+    public ResponseEntity<String> login(Map<String, String> requestMap) {
+        log.info("Inside login");
+        try {
+            Authentication auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(requestMap.get("email"), requestMap.get("password")));
+            if(auth.isAuthenticated()){
+                if(customerUsersDetailsService.getUserDetail().getStatus().equalsIgnoreCase("true")){
+                    return new ResponseEntity<String>("{\"token\":\""+
+                            jwtUtil.generateToken(customerUsersDetailsService.getUserDetail().getEmail(),
+                                    customerUsersDetailsService.getUserDetail().getRole())+"\"}",HttpStatus.OK);
+                }
+                else {
+                    return new ResponseEntity<String>("{\"message\":\""+"wait for the approval."+"\"}",HttpStatus.BAD_REQUEST);
+                }
+            }
+        }catch (Exception e){
+
+            log.error("{}",e);
+        }
+        return new ResponseEntity<String>("{\"message\":\""+"Bad credentials."+"\"}",HttpStatus.BAD_REQUEST);
+
+    }
+
     private boolean validateSignUpMap(Map<String, String> requestMap){
         return requestMap.containsKey("name") && requestMap.containsKey("contactNumber")
                 && requestMap.containsKey("email") && requestMap.containsKey("password");
