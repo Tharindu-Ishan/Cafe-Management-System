@@ -17,4 +17,8 @@ public interface UserRest {
     public ResponseEntity<String> login(@RequestBody(required = true) Map<String,String> requestMap);
     @GetMapping(path = "/get")
     public ResponseEntity<List<UserWrapper>> getAllUser();
+    @PostMapping("/update")
+    public ResponseEntity<String> update(@RequestBody(required = true) Map<String ,String> requestMap);
+    @GetMapping("/checkToken")
+    ResponseEntity<String> checkToken();
 }
