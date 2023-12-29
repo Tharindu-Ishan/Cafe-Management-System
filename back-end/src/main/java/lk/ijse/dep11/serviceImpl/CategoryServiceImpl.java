@@ -1,18 +1,23 @@
 package lk.ijse.dep11.serviceImpl;
 
+import com.google.common.base.Strings;
 import lk.ijse.dep11.JWT.JwtFilter;
 import lk.ijse.dep11.POJO.Category;
 import lk.ijse.dep11.constants.CafeConstants;
 import lk.ijse.dep11.dao.CategoryDao;
 import lk.ijse.dep11.service.CategoryService;
 import lk.ijse.dep11.utils.CafeUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
+@Slf4j
 @Service
 public class CategoryServiceImpl implements CategoryService {
     @Autowired
@@ -35,6 +40,21 @@ public class CategoryServiceImpl implements CategoryService {
             e.printStackTrace();
         }
         return CafeUtils.getResponseEntity(CafeConstants.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @Override
+    public ResponseEntity<List<Category>> getAllCategory(String filterValue) {
+        try {
+            if(!Strings.isNullOrEmpty(filterValue)&&filterValue.equalsIgnoreCase("true")){
+                log.info("Inside If");
+                return new ResponseEntity<>(categoryDao.getAllCategory(),HttpStatus.OK);
+            }
+            return new ResponseEntity<>(categoryDao.findAll(),HttpStatus.OK);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(new ArrayList<>(),HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     private boolean validatedCategoryMap(Map<String, String> requestMap, boolean validateId) {
