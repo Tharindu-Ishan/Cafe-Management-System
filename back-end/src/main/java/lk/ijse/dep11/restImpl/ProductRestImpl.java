@@ -1,7 +1,8 @@
 package lk.ijse.dep11.restImpl;
 
 import lk.ijse.dep11.constants.CafeConstants;
-import lk.ijse.dep11.rest.ProductRest;
+import lk.ijse.dep11.rest.CategoryRest;
+import lk.ijse.dep11.rest.ProductRest2;
 import lk.ijse.dep11.service.ProductService;
 import lk.ijse.dep11.utils.CafeUtils;
 import lk.ijse.dep11.wrapper.ProductWrapper;
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-public class ProductRestImpl implements ProductRest {
+public class ProductRestImpl implements ProductRest2 {
     @Autowired
     ProductService productService;
     @Override
@@ -48,4 +49,17 @@ public class ProductRestImpl implements ProductRest {
         }
         return CafeUtils.getResponseEntity(CafeConstants.SOMETHING_WENT_WRONG,HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    @Override
+    public ResponseEntity<String> deleteProduct(Integer id) {
+        try {
+            return productService.deleteProduct(id);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return CafeUtils.getResponseEntity(CafeConstants.SOMETHING_WENT_WRONG,HttpStatus.INTERNAL_SERVER_ERROR);
+
+    }
+
+
 }

@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 @RequestMapping("/product")
-public interface ProductRest {
+public interface ProductRest2 {
     @PostMapping("/add")
     ResponseEntity<String> addNewProduct(@RequestBody Map<String,String> requestMap);
     @GetMapping("/get")

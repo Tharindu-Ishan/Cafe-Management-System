@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-public class CategoryRestIml implements CategoryRest {
+public class CategoryRestIml implements CategoryRest{
     @Autowired
     CategoryService categoryService;
     @Override
