@@ -1,2 +1,4 @@
-package lk.ijse.dep11.restImpl;public class ProductRestImpl {
+package lk.ijse.dep11.restImpl;
+
+public class ProductRestImpl {
 }
