@@ -1,8 +1,7 @@
 package lk.ijse.dep11.restImpl;
 
 import lk.ijse.dep11.constants.CafeConstants;
-import lk.ijse.dep11.rest.CategoryRest;
-import lk.ijse.dep11.rest.ProductRest2;
+import lk.ijse.dep11.rest.ProductRest;
 import lk.ijse.dep11.service.ProductService;
 import lk.ijse.dep11.utils.CafeUtils;
 import lk.ijse.dep11.wrapper.ProductWrapper;
@@ -16,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-public class ProductRestImpl implements ProductRest2 {
+public class ProductRestImpl implements ProductRest {
     @Autowired
     ProductService productService;
     @Override
