@@ -38,4 +38,14 @@ public class ProductRestImpl implements ProductRest {
         }
         return new ResponseEntity<>(new ArrayList<>(),HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    @Override
+    public ResponseEntity<String> upDateProduct(Map<String, String> requestMap) {
+        try {
+            return productService.upDateProduct(requestMap);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return CafeUtils.getResponseEntity(CafeConstants.SOMETHING_WENT_WRONG,HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }

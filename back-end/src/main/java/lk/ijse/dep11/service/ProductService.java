@@ -9,4 +9,5 @@ import java.util.Map;
 public interface ProductService {
     ResponseEntity<String> addNewProduct(Map<String,String> requestMap);
     ResponseEntity<List<ProductWrapper>> getAllProduct();
+    ResponseEntity<String> upDateProduct(Map<String,String> requestMap);
 }

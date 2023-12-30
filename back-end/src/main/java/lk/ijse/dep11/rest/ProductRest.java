@@ -13,4 +13,6 @@ public interface ProductRest {
     ResponseEntity<String> addNewProduct(@RequestBody Map<String,String> requestMap);
     @GetMapping("/get")
     ResponseEntity<List<ProductWrapper>> getAllProduct();
+    @PostMapping("/update")
+    ResponseEntity<String> upDateProduct(@RequestBody Map<String,String> requestMap);
 }
