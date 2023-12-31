@@ -5,15 +5,22 @@
 v 1.0.0
 
 ## Features
-1. Manage Customers (Add New Customer / Remove existing Customer)
-2. Manage Items (Add New Items / Remove existing item
-3. Auto Generating OrderNos and CustomerNos
-4. Place an Order (Multiple item selection)
-5. Calculate the total bill amount
-6. Check Stock quantities
-7. Print the invoice
-8. Search Orders and Customers
-9. Any Many more
+1. Sign-up api
+2. Login api
+3. Get all users api
+4. Change user status api
+5. Change password and forgegeget password api
+6. Add new category api
+7. Get all category api
+8. Update category api
+10. Add product api
+11. Get all product api
+12. Update product api
+13. Delete product api
+14. Update status of product api
+15. Get product by id api
+16. Generate report api of bill
+17. Delete bills api
 
 
 ## Images
