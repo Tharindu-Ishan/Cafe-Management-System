@@ -42,7 +42,7 @@
             <mat-form-field appearance="standard" fxFlex>
                 <mat-label>Password</mat-label>
                 <input matInput formControlName="password" type="password" required [type]="password ? 'password': 'text'">
-                <button type="button" mat-icon-button matSuffix (click)="password =!password" [attr.aria-label]="'Hide password'"  [attr.aria-pressed]=""password >
+                <button type="button" mat-icon-button matSuffix (click)="password =!password" [attr.aria-label]="'Hide password'"  [attr.aria-pressed]="password" >
                     <mat-icon>{{password ? 'visibility_off':'visibility' }}</mat-icon>
                 </button>
                 <mat-error *ngIf="signupForm.controls.password.touched && signupForm.controls.password.invalid">
@@ -70,6 +70,7 @@
         </div>
     </form>
 </mat-dialog-content>
+
 <mat-dialog-actions align="end">
     <button mat-raised-button color="primary" type="submit" (click)="handleSubmit()" [disabled]="validateSubmit()|| !(signupForm.valid && signupForm.dirty)">
         <mat-icon>save</mat-icon>Signup
