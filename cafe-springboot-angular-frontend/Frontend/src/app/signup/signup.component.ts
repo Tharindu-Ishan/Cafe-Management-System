@@ -15,14 +15,14 @@ import { error } from 'console';
 })
 export class SignupComponent implements OnInit {
   password=true;
-  confirmpassword=true;
+  confirmPassword=true;
   signupForm:any=FormGroup;
   responseMessage:any;
   constructor(
     private formBuilder:FormBuilder,
     private router:Router,
     private userService:UserService,
-    private snackbarService=SnackbarService,
+    private snackbarService:SnackbarService,
     private dialogRef:MatDialogRef<SignupComponent>,
     private ngxService:NgxUiLoaderService
   ) { }
@@ -58,6 +58,7 @@ export class SignupComponent implements OnInit {
       this.ngxService.stop();
       this.dialogRef.close();
       this.responseMessage=response?.message;
+      
       this.snackbarService.openSnackBar(this.responseMessage,"");
       this.router.navigate(['/']);
     },(error)=>{
