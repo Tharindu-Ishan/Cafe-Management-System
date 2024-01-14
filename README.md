@@ -22,7 +22,6 @@ v 1.0.0
 16. Generate report api of bill
 17. Delete bills api
 
-
 ## Images
 ![Color Chooser App](src/main/resources/asset/img/1.png)
 
