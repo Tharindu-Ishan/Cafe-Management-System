@@ -1,8 +1,8 @@
-# Cafe Management System -Full Stack
+# Cafe Management System -Full Stack Application
 
 
 ## Version
-v 1.0.0
+v1.0.0
 
 ## Features
 1. Sign-up api
