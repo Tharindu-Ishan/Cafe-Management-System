@@ -1,8 +1,8 @@
-# Cafe Management System -Full Stack
+# Cafe Management System -Full Stack Application
 
 
 ## Version
-v 1.0.0
+v1.0.0
 
 ## Features
 1. Sign-up api
@@ -21,7 +21,6 @@ v 1.0.0
 15. Get product by id api
 16. Generate report api of bill
 17. Delete bills api
-
 
 ## Images
 ![Color Chooser App](src/main/resources/asset/img/1.png)
