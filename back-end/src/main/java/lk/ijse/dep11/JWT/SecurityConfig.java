@@ -1,7 +1,7 @@
 package lk.ijse.dep11.JWT;
 
 import jakarta.servlet.http.HttpServletRequest;
-import org.apache.pdfbox.filter.Filter;
+import org.hibernate.Filter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.jersey.JerseyProperties;
 import org.springframework.context.annotation.Bean;
