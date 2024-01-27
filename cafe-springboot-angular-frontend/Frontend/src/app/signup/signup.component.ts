@@ -62,6 +62,7 @@ export class SignupComponent implements OnInit {
       this.snackbarService.openSnackBar(this.responseMessage,"");
       this.router.navigate(['/']);
     },(error)=>{
+      console.log("awla");
       this.ngxService.stop();
       if(error.error?.message){
         this.responseMessage=error.error?.message;

@@ -22,6 +22,7 @@ public class UserRestImpl implements UserRest {
     @Override
     public ResponseEntity<String> signUp(Map<String, String> requestMap) {
         try{
+            System.out.println("signing");
             return  userService.signUp(requestMap);
         } catch (Exception e) {
             e.printStackTrace();
@@ -65,6 +66,7 @@ public class UserRestImpl implements UserRest {
     @Override
     public ResponseEntity<String> checkToken() {
         try{
+            System.out.println("checking");
             return userService.checkToken();
 
         }catch (Exception e){

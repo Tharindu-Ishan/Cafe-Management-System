@@ -1,6 +1,6 @@
 package lk.ijse.dep11.dao;
 
-import jakarta.transaction.Transactional;
+import javax.transaction.Transactional;
 import lk.ijse.dep11.POJO.User;
 import lk.ijse.dep11.wrapper.UserWrapper;
 import org.springframework.data.jpa.repository.JpaRepository;
